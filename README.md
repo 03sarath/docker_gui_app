@@ -9,4 +9,6 @@ Before getting started, if you would like to test the solution, try pulling thes
 docker pull 03sarath/docker_gui_app:latest
 ``
 2. Run the container using 
-``docker run -it --rm --net=host -e DISPLAY=host.docker.internal:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix docker_gui_app``
+```
+docker run -it --rm --net=host -e DISPLAY=host.docker.internal:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix docker_gui_app
+```
