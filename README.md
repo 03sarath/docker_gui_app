@@ -72,4 +72,5 @@ VcXsrv is an X11 server for Windows that allows graphical applications running i
 
 2. Setup VcXsrv, open the software
 
+![alt text](https://github.com/03sarath/docker_gui_app/blob/main/images/Screenshot%202024-08-12%20183005.png?raw=true)
 
