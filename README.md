@@ -74,3 +74,59 @@ VcXsrv is an X11 server for Windows that allows graphical applications running i
 
 ![alt text](https://github.com/03sarath/docker_gui_app/blob/main/images/Screenshot%202024-08-12%20183005.png?raw=true)
 
+![alt text](https://github.com/03sarath/docker_gui_app/blob/main/images/Screenshot%202024-08-12%20183017.png?raw=true)
+
+![alt text](https://github.com/03sarath/docker_gui_app/blob/main/images/Screenshot%202024-08-12%20183026.png?raw=true)
+
+![alt text](https://github.com/03sarath/docker_gui_app/blob/main/images/Screenshot%202024-08-12%20183037.png?raw=true)
+
+
+### Step 3: Now you can run your Docker container using the command below.
+
+```
+docker run -it --rm --net=host -e DISPLAY=host.docker.internal:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix docker_gui_app
+```
+The command `docker run -it --rm --net=host -e DISPLAY=host.docker.internal:0.0 -v /tmp/.X11-unix:/tmp/.X11-unix docker_gui_app` is used to run a Docker container that can display GUI applications on the host machine. Here's a breakdown of what each part of the command does:
+
+1. `docker run`:
+ This command is used to create and start a new container from a Docker image.
+
+2. `-it`: 
+
+`-i` (interactive): Keeps STDIN open, allowing interaction with the container via the terminal.
+`-t` (TTY): Allocates a pseudo-TTY, providing an interactive terminal session inside the container.
+
+3. `--rm`:
+
+Automatically removes the container when it exits. This is useful for temporary containers to avoid cluttering your system with unused containers.
+
+4. `--net=host`:
+
+Shares the network stack with the host machine. This means the container uses the host's network interfaces directly. It allows the container to use the host's network resources as if they were its own, which is necessary for displaying GUIs when running on Linux or with specific configurations.
+
+5. `-e DISPLAY=host.docker.internal:0.0`:
+
+`-e`: Sets an environment variable inside the container.
+
+`DISPLAY=host.docker.internal:0.0`: Configures the DISPLAY environment variable to point to the X11 server on the host. This tells the container where to render the graphical output.
+
+6. `-v /tmp/.X11-unix:/tmp/.X11-unix`:
+
+-v (volume): Mounts a volume from the host into the container.
+
+`/tmp/.X11-unix:/tmp/.X11-unix`: Mounts the X11 socket directory from the host to the container. This directory contains the Unix domain sockets used by X11 for communication, allowing the container to send display commands to the host's X server.
+
+7. `docker_gui_app`:
+
+This is the name of the Docker image you want to run. It should be built to run a GUI application.
+
+This is how the output GUI from your Docker container will look like., `xeyes` is a simple X11-based graphical application that displays a pair of eyes on the screen. The eyes follow the movement of the mouse cursor, creating a humorous and interactive visual effect. It's often used for testing X11 environments and demonstrating basic graphical capabilities.
+
+![alt text](https://github.com/03sarath/docker_gui_app/blob/main/images/Screenshot%202024-08-12%20183140.png?raw=true)
+
+
+To develop your own app for your purposes, you can follow the documentation for X11-based graphical applications. 
+
+https://www.x.org/wiki/Documentation/
+
+https://doc.cocalc.com/x11.html
